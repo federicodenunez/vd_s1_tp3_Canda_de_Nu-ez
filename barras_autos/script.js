@@ -1,4 +1,4 @@
-let months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+let months = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
 let counts = Array.from({ length: 12 }, () => 0); // initialize array with 12 zeros
 
 d3.dsv(';', 'trafico.csv', d3.autoType).then(data => {
@@ -14,7 +14,7 @@ d3.dsv(';', 'trafico.csv', d3.autoType).then(data => {
   }
   console.log(counts);
 
-  const colors = ["#AFC1BE", "#AFC1BE", "#AFC1BE", "#AFC1BE", "#AFC1BE", "#AFC1BE", "#AFC1BE", "#AFC1BE", "#AFC1BE", "#AFC1BE", "#AFC1BE", "#43E0CA"]; // Array de colores para cada mes
+  const colors = ["#C0C0C0", "#C0C0C0", "#C0C0C0", "#C0C0C0", "#C0C0C0", "#C0C0C0", "#C0C0C0", "#C0C0C0", "#C0C0C0", "#C0C0C0", "#C0C0C0", "#DB3535"]; // Array de colores para cada mes
 
   const chartData = months.reduce((acc, month, i) => {
     const index = months.indexOf(month);
@@ -36,17 +36,17 @@ d3.dsv(';', 'trafico.csv', d3.autoType).then(data => {
         x: "x",
         y: "y", // utilizamos "y" para el eje y
         text: "y",
-        dy: -6,
+        dy: -7,
         align: "center",
         baseline: "bottom",
-        font: "bold sans-serif", 
-        fontSize: 16,
+        font: "bold", 
+        fontSize: 14,
       }),
     ],
     y: {
       grid: false,
       label: "", 
-      scale: d3.scaleLinear().domain([0, Math.max(1, d3.max(counts))]).nice() // especificamos la escala lineal de D3
+      scale: d3.scaleLinear().domain([0, Math.max(1, d3.max(counts))]).nice() // especificamos la escala 
     },
     x: {
       label: "", 
@@ -74,4 +74,5 @@ El código luego itera sobre cada objeto en el array data y comprueba si la prop
 
 A continuación, se crea un array colors que contiene colores para cada mes. El código luego combina los valores de months, counts y colors en un objeto chartData. El objeto chartData tiene propiedades x para el nombre del mes, y para la cantidad de vehículos mal estacionados en el mes y color para el color correspondiente del mes.*/
 
+/* Cambiar la barra de azul al rojo y el resto de barras a un gris para que no destaquen*/
 

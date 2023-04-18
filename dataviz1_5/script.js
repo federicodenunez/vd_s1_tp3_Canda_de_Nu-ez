@@ -1,4 +1,4 @@
-let months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+let months = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
 let counts = Array.from({ length: 12 }, () => 0); // initialize array with 12 zeros
 
 d3.dsv(';', 'trafico.csv', d3.autoType).then(data => {
@@ -17,7 +17,7 @@ d3.dsv(';', 'trafico.csv', d3.autoType).then(data => {
   }
   console.log(counts);
 
-  const colors = ["#AFC1BE", "#AFC1BE", "#AFC1BE", "#AFC1BE", "#AFC1BE", "#AFC1BE", "#AFC1BE", "#AFC1BE", "#AFC1BE", "#AFC1BE", "#AFC1BE", "#43E0CA"]; // Array de colores para cada mes
+  const colors = ["#C0C0C0", "#C0C0C0", "#C0C0C0", "#C0C0C0", "#C0C0C0", "#C0C0C0", "#C0C0C0", "#C0C0C0", "#C0C0C0", "#C0C0C0", "#C0C0C0", "#DB3535"]; // Array de colores para cada mes
 
   const chartData = months.reduce((acc, month, i) => {
     const index = months.indexOf(month);
@@ -39,17 +39,17 @@ d3.dsv(';', 'trafico.csv', d3.autoType).then(data => {
         x: "x",
         y: "y", // utilizamos "y" para el eje y
         text: "y",
-        dy: -6,
+        dy: -7,
         align: "center",
         baseline: "bottom",
-        font: "bold sans-serif", 
-        fontSize: 16,
+        font: "bold", 
+        fontSize: 14,
       }),
     ],
     y: {
       grid: false,
       label: "", 
-      scale: d3.scaleLinear().domain([0, Math.max(1, d3.max(counts))]).nice() // especificamos la escala lineal de D3
+      scale: d3.scaleLinear().domain([0, Math.max(1, d3.max(counts))]).nice() // especificamos la escala 
     },
     x: {
       label: "", 
@@ -60,7 +60,6 @@ d3.dsv(';', 'trafico.csv', d3.autoType).then(data => {
   // Add chart to the div#chart in index.html
   d3.select('#chart').append(() => chart)
 });
-
 
 
 
