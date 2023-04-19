@@ -10,18 +10,18 @@ d3.dsv(',', 'csv_reducido.csv', d3.autoType).then(data => {
 
   for (let index = 0; index < data.length; index++) { // itera todas las filas
     const element = data[index]["fecha_ingreso"];
-    if (element != undefined) { // check if fecha_ingreso property exists
-      let mes = parseInt(element.split('/')[1], 10) - 1; // get month from date string and subtract 1 to get index
+    if (element != undefined) { // Checkea si existe la fecha
+      let mes = parseInt(element.split('/')[1], 10) - 1; // extrae el mes de fecha_ingreso
         counts[mes]++;
     }
   }
 
   for (let index = 0; index < data.length; index++) { // itera todas las filas
     const element = data[index]["fecha_ingreso"];
-    if (element != undefined) { // check if fecha_ingreso property exists
-      let day = parseInt(element.split('/')[0], 10); // get day from date string
-      let mes = parseInt(element.split('/')[1], 10) - 1; // get month from date string and subtract 1 to get index
-      if (day >= 15) { // check if day is greater or equal to 15
+    if (element != undefined) { // Checkea si existe la fecha
+      let day = parseInt(element.split('/')[0], 10); // extrae el dia de fecha_ingreso
+      let mes = parseInt(element.split('/')[1], 10) - 1; // extrae el mes de fecha_ingreso
+      if (day >= 15) { // checkea si el día es después del 15 
         counts_periodo[mes]++;
       }
     }
@@ -31,11 +31,6 @@ d3.dsv(',', 'csv_reducido.csv', d3.autoType).then(data => {
   const monthData = months.reduce((acc, month, i) => {
     const index = months.indexOf(month);
     acc.push({ x: index, y: counts[index]});
-    return acc;
-  }, []);
-  const periodData = months.reduce((acc, month, i) => {
-    const index = months.indexOf(month);
-    acc.push({ x: index, y: counts_periodo[index]});
     return acc;
   }, []);
   /*const MonthData_mitad = months.reduce((acc, month, i) => {
@@ -65,35 +60,52 @@ d3.dsv(',', 'csv_reducido.csv', d3.autoType).then(data => {
   let chart = Plot.plot({
     width:700,
     marks: [
-      Plot.line(monthData, {
+      
+      Plot.areaY(monthData, {
         x: "x",
         y: "y",
-        stroke: "gray",
-        strokeWidth: 3,
-        opacity: 0.8,
+        fill: "#F46A5C",
+        opacity: 1,
       }),
-      Plot.line(periodData, {
+
+      Plot.text(monthData.slice(11,12),{
         x: "x",
         y: "y",
-        stroke: "black",
-        strokeWidth: 4,
-        opacity: 0.8,
+        text: "y",
+        dy: -15,
+        dx: -18,
       }),
+      Plot.text(monthData.slice(2,3),{
+        x: "x",
+        y: "y",
+        text: "y",
+        dy: -10,
+      }),
+
+
     ],  
     x: {
+      zero: false,
       line: false,
       nice: true,
       label: "",
       tickFormat: d => months[d],
+      tickSize: 5,
     },
     y: {
+      zero: false,
       nice: true,
       line: false,
+      label: "",
+      tickFormat: d3.format("d"),
       domain: [0,65000],
+      tickSize: 3, // preguntar
+      ticks: 6,
     },
     style: {
       padding: "10px",
       color: "black",
+      font: "arial",
     },
   });
 
@@ -103,7 +115,12 @@ d3.dsv(',', 'csv_reducido.csv', d3.autoType).then(data => {
 /*Poner la cantidad del mes que mas tuvo y la cantidad de diciembre para
 demostrar que la diferencia no es muy grande.
 
-Tambien puedo plantear el ratio de complaints por mes
-ratio = report del mes / reports anuales*/ 
+Paleta de colores:
+ROJO:
+GRIS ROJO: EFDBDB
+GRIS:
 
-/* Sacar los 0*/ 
+
+
+*/ 
+
