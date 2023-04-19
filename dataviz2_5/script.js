@@ -76,7 +76,7 @@ d3.dsv(',', 'csv_reducido.csv', d3.autoType).then(data => {
         x: "x",
         y: "y",
         fill: "#EFDBDB",
-        opacity: 1,
+        opacity: 0.3,
       }),
       Plot.line(periodData, {
         x: "x",
@@ -95,28 +95,28 @@ d3.dsv(',', 'csv_reducido.csv', d3.autoType).then(data => {
       Plot.text(monthData.slice(11,12),{
         x: "x",
         y: "y",
-        text: "y",
+        text: d => d3.format(",")(d.y).replace(",", "."),
         dy: -15,
         dx: -18,
       }),
       Plot.text(monthData.slice(2,3),{
         x: "x",
         y: "y",
-        text: "y",
+        text: d => d3.format(",")(d.y).replace(",", "."),
         dy: -10,
       }),
 
       Plot.text(periodData.slice(11,12),{
         x: "x",
         y: "y",
-        text: "y",
+        text: d => d3.format(",")(d.y).replace(",", "."),
         dy: -14,
         dx: -18,
       }),
       Plot.text(periodData.slice(2,3),{
         x: "x",
         y: "y",
-        text: "y",
+        text: d => d3.format(",")(d.y).replace(",", "."),
         dy: -10,
       }),
 

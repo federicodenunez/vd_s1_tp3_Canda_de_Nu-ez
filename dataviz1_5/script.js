@@ -38,13 +38,12 @@ d3.dsv(';', 'trafico.csv', d3.autoType).then(data => {
       Plot.text(chartData.slice(11), {
         x: "x",
         y: "y", // utilizamos "y" para el eje y
-        text: "y",
+        text: d => d3.format(",")(d.y).replace(",", "."),
+        fontSize: 14,
         dy: -7,
         align: "center",
         baseline: "bottom",
-        font: "bold", 
-        fontSize: 14,
-      }),
+    }),
     ],
     y: {
       grid: false,
@@ -57,7 +56,11 @@ d3.dsv(';', 'trafico.csv', d3.autoType).then(data => {
     },
     x: {
       label: "", 
+      tickSize: 3,
       tickFormat: d => months[d],
+    },
+    style: {
+      fontSize: 14,
     },
   });
 
