@@ -7,10 +7,10 @@ d3.dsv(';', 'trafico.csv', d3.autoType).then(data => {
 
   for (let index = 0; index < data.length; index++) { // itera todas las filas
     const element = data[index]["fecha_ingreso"];
-    if (element != undefined) { // check if fecha_ingreso property exists
-      let day = parseInt(element.split('/')[0], 10); // get day from date string
-      let mes = parseInt(element.split('/')[1], 10) - 1; // get month from date string and subtract 1 to get index
-      if (day >= 15) { // check if day is greater or equal to 15
+    if (element != undefined) { // checkea si el valor no es vacío
+      let day = parseInt(element.split('/')[0], 10); // extrae el día
+      let mes = parseInt(element.split('/')[1], 10) - 1; // 
+      if (day >= 15) { // se fija s
         counts[mes]++;
       }
     }
@@ -38,13 +38,12 @@ d3.dsv(';', 'trafico.csv', d3.autoType).then(data => {
       Plot.text(chartData.slice(11), {
         x: "x",
         y: "y", // utilizamos "y" para el eje y
-        text: "y",
+        text: d => d3.format(",")(d.y).replace(",", "."),
+        fontSize: 14,
         dy: -7,
         align: "center",
         baseline: "bottom",
-        font: "bold", 
-        fontSize: 14,
-      }),
+    }),
     ],
     y: {
       grid: false,
@@ -57,7 +56,11 @@ d3.dsv(';', 'trafico.csv', d3.autoType).then(data => {
     },
     x: {
       label: "", 
+      tickSize: 3,
       tickFormat: d => months[d],
+    },
+    style: {
+      fontSize: 14,
     },
   });
 
