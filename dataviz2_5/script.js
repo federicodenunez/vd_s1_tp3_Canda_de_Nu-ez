@@ -38,29 +38,17 @@ d3.dsv(',', 'csv_reducido.csv', d3.autoType).then(data => {
     acc.push({ x: index, y: counts_periodo[index]});
     return acc;
   }, []);
-  /*const MonthData_mitad = months.reduce((acc, month, i) => {
-    const index = months.indexOf(month);
-    acc.push({ x: index, y: counts[index]/2});
-    return acc;
-  }, []);
 
-  for (let index = 0; index < data.length; index++) { // itera todas las filas
-    const element = data[index]["fecha_ingreso"];
-    if (element != undefined) { // check if fecha_ingreso property exists
-      let day = parseInt(element.split('/')[0], 10); // get day from date string
-      let mes = parseInt(element.split('/')[1], 10) - 1; // get month from date string and subtract 1 to get index
-      if (day < 15) { // check if day is greater or equal to 15
-        counts_primer_periodo[mes]++;
-      }
-    }
-  }
+  /*const linkData = [
+    { x: 0, y: monthData[8]},
+    { x: 1, y: monthData[12]},
+    { x: 2, y: periodData[8]},
+    { x: 3, y: periodData[12]}
+  ];*/
+  //console.log(linkData)
+  // quiero hacer un link (=flecha) que vaya de la parte roja de agosto a la parte gris
+  
 
-  const primer_periodData = months.reduce((acc, month, i) => {
-    const index = months.indexOf(month);
-    acc.push({ x: index, y: counts_primer_periodo[index]});
-    return acc;
-  }, []);
-  */
 
   let chart = Plot.plot({
     width:700,
@@ -141,8 +129,9 @@ d3.dsv(',', 'csv_reducido.csv', d3.autoType).then(data => {
     },
     style: {
       padding: "10px",
-      color: "black",
+      color: "black", // elegir un gris para el texto, gris oscuro
       font: "arial",
+      fontSize: 14,
     },
   });
 
