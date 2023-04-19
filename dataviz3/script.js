@@ -1,5 +1,5 @@
 const mapaFetch = d3.json('barrios-caba.geojson');
-const dataFetch = d3.dsv(';', '147_ruidos_molestos.csv', d3.autoType)
+const dataFetch = d3.dsv(',', 'ruidos_12.csv', d3.autoType)
 Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
 
   let chartMap = Plot.plot({
