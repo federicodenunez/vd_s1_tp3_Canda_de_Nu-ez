@@ -17,7 +17,7 @@ d3.dsv(';', 'trafico.csv', d3.autoType).then(data => {
   }
   console.log(counts);
 
-  const colors = ["#C0C0C0", "#C0C0C0", "#C0C0C0", "#C0C0C0", "#C0C0C0", "#C0C0C0", "#C0C0C0", "#C0C0C0", "#C0C0C0", "#C0C0C0", "#C0C0C0", "#DB3535"]; // Array de colores para cada mes
+  const colors = ["#EFDBDB", "#EFDBDB", "#EFDBDB", "#EFDBDB", "#EFDBDB", "#EFDBDB", "#EFDBDB", "#EFDBDB", "#EFDBDB", "#EFDBDB", "#EFDBDB", "#F46A5C"]; // Array de colores para cada mes
 
   const chartData = months.reduce((acc, month, i) => {
     const index = months.indexOf(month);
@@ -49,6 +49,10 @@ d3.dsv(';', 'trafico.csv', d3.autoType).then(data => {
     y: {
       grid: false,
       label: "", 
+      nice: true,
+      ticks: 6,
+      tickFormat: d3.format("d"),
+      tickSize: 3,
       scale: d3.scaleLinear().domain([0, Math.max(1, d3.max(counts))]).nice() // especificamos la escala 
     },
     x: {
