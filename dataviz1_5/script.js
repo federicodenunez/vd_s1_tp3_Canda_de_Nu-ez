@@ -10,7 +10,7 @@ d3.dsv(';', 'trafico.csv', d3.autoType).then(data => {
     if (element != undefined) { // checkea si el valor no es vacío
       let day = parseInt(element.split('/')[0], 10); // extrae el día
       let mes = parseInt(element.split('/')[1], 10) - 1; // 
-      if (day >= 15) { // se fija s
+      if (day >= 15) { // toma solo la segunda quincena
         counts[mes]++;
       }
     }
