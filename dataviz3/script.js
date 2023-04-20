@@ -1,5 +1,11 @@
+// config. fecha español
+d3.json('https://cdn.jsdelivr.net/npm/d3-time-format@3/locale/es-ES.json').then(locale => {
+  d3.timeFormatDefaultLocale(locale)
+})
+
+
 const mapaFetch = d3.json('barrios-caba.geojson');
-const dataFetch = d3.dsv(',', 'ruidos_8.csv', d3.autoType)
+const dataFetch = d3.dsv(';', 'b.csv', d3.autoType)
 Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
 
   let chartMap = Plot.plot({
@@ -20,10 +26,10 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
     ],
     facet: {
       data: data,
-      x: d => d3.timeFormat('%B')(d3.timeParse('%d/%m/%Y')(d.fecha_ingreso)),
+      x: d => d3.timeFormat('%a')(d3.timeParse('%d/%m/%Y')(d.fecha_ingreso)),
     },
     fx: {
-      domain: ["August", "December"]
+      domain: ["lun", "vie"]
     },
     width: 1000
   })
