@@ -1,6 +1,6 @@
 const mapaFetch = d3.json('barrios-caba.geojson');
-const dataFetch = d3.dsv(';', 'b.csv', d3.autoType)
-console.log(dataFetch)
+const dataFetch = d3.dsv(';', 'c.csv', d3.autoType)
+
 Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
 
   let chartMap = Plot.plot({
@@ -27,7 +27,7 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
       domain: ['March', 'December']
     },
     width: 1000
-  })
+  })  
 
   /* Agregamos al DOM la visualización chartMap */
   d3.select('#chart').append(() => chartMap)
