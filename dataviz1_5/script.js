@@ -44,6 +44,7 @@ d3.dsv(';', 'trafico.csv', d3.autoType).then(data => {
         align: "center",
         baseline: "bottom",
     }),
+    
     ],
     y: {
       grid: false,
