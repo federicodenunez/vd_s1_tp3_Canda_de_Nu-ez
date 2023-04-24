@@ -39,19 +39,17 @@ d3.dsv(',', 'csv_reducido.csv', d3.autoType).then(data => {
     return acc;
   }, []);
 
-  /*const linkData = [
-    { x: 0, y: monthData[8]},
-    { x: 1, y: monthData[12]},
-    { x: 2, y: periodData[8]},
-    { x: 3, y: periodData[12]}
-  ];*/
-  //console.log(linkData)
+  const inicio_ago = { x: 8, y: periodData[8].y };
+  const fin_ago = { x: 8, y: monthData[8].y };
+
+  const inicio_dic = { x: 11, y: monthData[11].y };
+  const fin_dic = { x: 11, y: periodData[11].y };
   // quiero hacer un link (=flecha) que vaya de la parte roja de agosto a la parte gris
-  
 
 
   let chart = Plot.plot({
-    width:700,
+    width: 700,
+    //height: 600,
     marks: [
       Plot.line(monthData, {
         x: "x",
@@ -85,7 +83,7 @@ d3.dsv(',', 'csv_reducido.csv', d3.autoType).then(data => {
         y: "y",
         text: d => d3.format(",")(d.y).replace(",", "."),
         dy: -15,
-        dx: -18,
+        dx: 24,
       }),
       Plot.text(monthData.slice(2,3),{
         x: "x",
@@ -93,7 +91,6 @@ d3.dsv(',', 'csv_reducido.csv', d3.autoType).then(data => {
         text: d => d3.format(",")(d.y).replace(",", "."),
         dy: -10,
       }),
-
       Plot.text(periodData.slice(11,12),{
         x: "x",
         y: "y",
@@ -107,15 +104,19 @@ d3.dsv(',', 'csv_reducido.csv', d3.autoType).then(data => {
         text: d => d3.format(",")(d.y).replace(",", "."),
         dy: -10,
       }),
-      /*
-      Plot.link(chartData, periodData, {
-        x1: "x",
-        y1: "y",
-        x2: "POP_2015",
-        y2: "R90_10_2015",
-        stroke: d => d.R90_10_2015 - d.R90_10_1980,
-        markerEnd: "arrow"
-      }),*/
+      
+      Plot.link(inicio_ago, fin_ago, {
+        stroke: "green",
+        strokeWidth: 5,
+        opacity: 1,
+      }),
+      Plot.arrow(inicio_dic, fin_dic, {
+        stroke: "#000",
+        strokeWidth: 1,
+        opacity: 1,
+        arrow: "last",
+        arrowSize: 8
+      }),
 
     ],  
     x: {
@@ -141,6 +142,7 @@ d3.dsv(',', 'csv_reducido.csv', d3.autoType).then(data => {
       font: "arial",
       fontSize: 14,
     },
+    
   });
 
   d3.select("#chart").append(() => chart);
