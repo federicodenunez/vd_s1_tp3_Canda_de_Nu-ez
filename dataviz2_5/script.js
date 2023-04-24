@@ -107,10 +107,18 @@ d3.dsv(',', 'csv_reducido.csv', d3.autoType).then(data => {
         text: d => d3.format(",")(d.y).replace(",", "."),
         dy: -10,
       }),
+      /*
+      Plot.link(chartData, periodData, {
+        x1: "x",
+        y1: "y",
+        x2: "POP_2015",
+        y2: "R90_10_2015",
+        stroke: d => d.R90_10_2015 - d.R90_10_1980,
+        markerEnd: "arrow"
+      }),*/
 
     ],  
     x: {
-      zero: false,
       line: false,
       nice: true,
       label: "",
