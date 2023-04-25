@@ -130,7 +130,7 @@ d3.dsv(',', 'data/csv_reducido.csv', d3.autoType).then(data => {
     
     
   });
-
+  
   d3.select("#chart1").append(() => chart);
   d3.select("#chart1 svg")["_groups"][0][0].setAttribute("viewBox", "0 0 750 450")
 });

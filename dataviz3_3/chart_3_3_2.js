@@ -15,8 +15,8 @@ Promise.all([
     ));
   
     // filtramos para solo tener los meses con más de 10 denuncias
-    filtered_counts3 = counts3.filter(d => d[1] > 10);
-    filtered_counts4 = counts4.filter(d => d[1] > 10);
+    const filtered_counts3 = counts3.filter(d => d[1] > 10 && counts4.some(c => c[0] === d[0] && c[1] > 10));
+    const filtered_counts4 = counts4.filter(d => d[1] > 10 && counts3.some(c => c[0] === d[0] && c[1] > 10));
   
     // Ordenar los valores por orden descendente de frecuencia
     filtered_counts3.sort((a, b) => d3.descending(a[1], b[1]));
@@ -30,14 +30,16 @@ Promise.all([
           x: d => d[0], // Valor único en la columna "domicilio_barrio"
           y: d => d[1], // Frecuencia del valor único
           fill: '#EFDBDB', // Color de las barras para el primer conjunto de datos
-          opacity: 0.9 // Opacidad de las barras para el primer conjunto de datos
+          opacity: 0.9, // Opacidad de las barras para el primer conjunto de datos
+          width: 20,
         }),
         Plot.barY(filtered_counts4, {
           
           x: d => d[0], // Valor único en la columna "domicilio_barrio"
           y: d => d[1], // Frecuencia del valor único
           fill: '#F46A5C', // Color de las barras para el segundo conjunto de datos
-          opacity: 0.9 // Opacidad de las barras para el segundo conjunto de datos
+          opacity: 0.9, // Opacidad de las barras para el segundo conjunto de datos
+          width: 20,
         }),
       ],
       marginLeft: 70,
@@ -48,3 +50,7 @@ Promise.all([
     d3.select('#chart3').append(() => chart);
   });
   
+
+  /*// filtramos para solo tener los meses con más de 10 denuncias
+    filtered_counts3 = counts3.filter(d => d[1] > 10);
+    filtered_counts4 = counts4.filter(d => d[1] > 10); */
