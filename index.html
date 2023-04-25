@@ -1,0 +1,49 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic|Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="style.css">
+    <title>Parcial Visualización de Datos</title>
+    <meta name="viewport" content="width=device-width">
+</head>
+
+<body>
+    <div class="head">
+        <header>Ditella Post</header>
+    
+        <div class="subhead">Nuñez, CABA - Miercoles 26 de abril, 2023</div>
+    </div>
+    
+    <div class="container">
+        <div class="head"><span class="titulo_grafico">Primer Gráfico</span></div>
+        <p>texto explicando pre primer grafico</p>
+        <div id="chart1" ></div>
+        <p>texto explicando post primer grafico</p>
+
+        <div class="head"><span class="titulo_grafico">Segundo Gráfico</span></div>
+        <p>texto explicando pre primer grafico</p>
+        <div id="chart2"></div>
+        <p>texto explicando post primer grafico</p>
+
+        <div class="head"><span class="titulo_grafico">Tercer Gráfico</span></div>
+        <p>lorem ipsum</p>
+        <div id="chart3_1"></div>
+        <div id="chart3_2"></div>
+        <p>aca se vienen las barras:</p>
+        <div id="chart3_3"></div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.2/iframeResizer.contentWindow.js"></script>
+    <script src="scripts/chart_1.js"></script>
+    <script src="scripts/chart_2.js"></script>
+    <script src="scripts/chart_3_1.js"></script>
+    <script src="scripts/chart_3_2.js"></script>
+    <script src="scripts/chart_3_3.js"></script>
+  </body>
+</html>
