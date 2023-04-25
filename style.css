@@ -18,7 +18,6 @@ header{
     display: inline-block;
     line-height: 72px;
     margin-bottom: 20px;
-
 }
 p{
     margin-top: 0;
@@ -27,11 +26,10 @@ p{
 .head{
     text-align: center;
     position: relative;
-
-
 }
 
 .subhead{
+    text-align: center;
     text-transform: uppercase;
     border-bottom: 2px solid #2f2f2f;
     border-top: 2px solid #2f2f2f;
@@ -39,10 +37,25 @@ p{
     margin-bottom: 20px;
 }
 
+.subhead2{
+    text-align: center;
+    padding: 5px 0 5px 0;
+    margin-bottom: 20px;
+    color: #e02f2f90;
+}
+
 .titulo_grafico{
     margin: 30px;
     font-weight: 600;
     font-size: 26px;
+    text-transform: uppercase;
+    padding: 10px 0 10px 0;
+}
+
+.subtitulo_grafico{
+    margin: 30px;
+    font-weight: 600;
+    font-size: 22px;
     text-transform: uppercase;
     padding: 10px 0 10px 0;
 }
