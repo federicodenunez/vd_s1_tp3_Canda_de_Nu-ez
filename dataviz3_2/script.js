@@ -1,5 +1,5 @@
 const mapaFetch = d3.json('barrios-caba.geojson')
-const dataFetch = d3.dsv(';', 'a.csv', d3.autoType)
+const dataFetch = d3.dsv(';', 'a_2.csv', d3.autoType)
 console.log(dataFetch)
 
 Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
@@ -29,7 +29,7 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
       type: 'quantize', 
       n: 8,
       scheme: 'reds',
-      label: 'Cantidad de denuncias, 15/03 - 31/03',
+      label: 'Cantidad de denuncias, 15/12 - 31/12',
       legend: true,
     },
     marks: [
@@ -45,13 +45,12 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
           fill: "WHITE",
           stroke: "BLACK",
           textAnchor: "center",
-          dx: 4,
+          dx: 1 ,
           filter: (d) => d.properties.DENUNCIAS > 10
         })
       )
     ],
   })
-
   /* Agregamos al DOM la visualización chartMap */
   d3.select('#chart').append(() => chartMap)
 })
