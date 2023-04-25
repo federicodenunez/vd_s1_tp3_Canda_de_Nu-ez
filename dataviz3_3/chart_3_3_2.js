@@ -26,12 +26,14 @@ Promise.all([
     let chart = Plot.plot({
       marks: [
         Plot.barY(filtered_counts3, {
+          
           x: d => d[0], // Valor único en la columna "domicilio_barrio"
           y: d => d[1], // Frecuencia del valor único
           fill: '#EFDBDB', // Color de las barras para el primer conjunto de datos
           opacity: 0.9 // Opacidad de las barras para el primer conjunto de datos
         }),
         Plot.barY(filtered_counts4, {
+          
           x: d => d[0], // Valor único en la columna "domicilio_barrio"
           y: d => d[1], // Frecuencia del valor único
           fill: '#F46A5C', // Color de las barras para el segundo conjunto de datos

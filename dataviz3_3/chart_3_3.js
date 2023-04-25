@@ -1,15 +1,10 @@
 d3.dsv(';', 'c.csv', d3.autoType).then(data => {
-  var counts = {};
-  data.forEach(function(d) {
-    if (d.domicilio_barrio in counts) {
-      counts[d.domicilio_barrio]++;
-    } else {
-      counts[d.domicilio_barrio] = 1;
-    }
-  });
-  var barrios = Object.keys(counts).map(function(key) {
-    return { barrio: key, cantidad_denuncias: counts[key] };
-  });
+  
+  stateage = {
+    const data = await FileAttachment("a.csv").csv({typed: true});
+    const ages = data.columns.slice(1); // convert wide data to tidy data
+    return Object.assign(ages.flatMap(age => data.map(d => ({state: d.name, age, population: d[age]}))), {ages});
+  }
 
   let chart = Plot.plot({
     marks: [
