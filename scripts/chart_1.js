@@ -43,7 +43,6 @@ d3.dsv(',', 'data/csv_reducido.csv', d3.autoType).then(data => {
     viewBox: "0 0 750 450",
     //height: 600,
     marks: [
-
       Plot.line(monthData, {
         x: "x",
         y: "y",
@@ -75,36 +74,41 @@ d3.dsv(',', 'data/csv_reducido.csv', d3.autoType).then(data => {
         x: "x",
         y: "y",
         text: d => d3.format(",")(d.y).replace(",", "."),
-        dy: -15,
+        dy: -10,
         dx: 24,
+        fontSize: 14,
       }),
       Plot.text(monthData.slice(2,3),{
         x: "x",
         y: "y",
         text: d => d3.format(",")(d.y).replace(",", "."),
         dy: -10,
+        fontSize: 18,
       }),
       Plot.text(periodData.slice(11,12),{
         x: "x",
         y: "y",
         text: d => d3.format(",")(d.y).replace(",", "."),
-        dy: -14,
-        dx: -18,
+        dy: -10,
+        dx: 24,
+        fontSize: 14,
       }),
       Plot.text(periodData.slice(2,3),{
         x: "x",
         y: "y",
         text: d => d3.format(",")(d.y).replace(",", "."),
         dy: -10,
+        fontSize: 18,
       }),
 
     ],  
     x: {
+      grid: true,
       line: false,
       nice: true,
       label: "",
       tickFormat: d => months[d],
-      tickSize: 5,
+      tickSize: 5, 
     },
     y: {
       zero: false,
@@ -123,6 +127,7 @@ d3.dsv(',', 'data/csv_reducido.csv', d3.autoType).then(data => {
       fontSize: 14,
       background: "#f9f7f1",
     },
+    
     
   });
 
