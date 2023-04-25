@@ -60,7 +60,7 @@ d3.dsv(';', 'data/trafico.csv', d3.autoType).then(data => {
       tickFormat: d => months[d],
     },
     style: {
-      fontSize: 14,
+      fontSize: 13,
       padding: "10px",
       color: "#2f2f2f",
       background: "#f9f7f1",
