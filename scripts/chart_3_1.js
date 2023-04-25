@@ -1,6 +1,5 @@
 const mapaFetch = d3.json('barrios-caba.geojson')
 const dataFetch = d3.dsv(';', 'data/a.csv', d3.autoType)
-//console.log(dataFetch)
 
 Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
   
@@ -32,7 +31,6 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
       label: 'Cantidad de denuncias, 15/03 - 31/03',
       legend: true,
     },
-    //console.log()
 
     marks: [
       Plot.geo(barrios, {
