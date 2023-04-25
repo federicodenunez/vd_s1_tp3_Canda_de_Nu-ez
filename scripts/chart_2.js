@@ -38,6 +38,7 @@ d3.dsv(';', 'data/trafico.csv', d3.autoType).then(data => {
         y: "y", // utilizamos "y" para el eje y
         text: d => d3.format(",")(d.y).replace(",", "."),
         fontSize: 14,
+        fontWeight: 700,
         dy: -7,
         align: "center",
         baseline: "bottom",
@@ -45,7 +46,7 @@ d3.dsv(';', 'data/trafico.csv', d3.autoType).then(data => {
     
     ],
     y: {
-      grid: false,
+      grid: true,
       label: "", 
       nice: true,
       ticks: 6,

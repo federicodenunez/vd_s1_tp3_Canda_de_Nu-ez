@@ -1,12 +1,12 @@
-const mapaFetch = d3.json('barrios-caba.geojson')
-const dataFetch = d3.dsv(';', 'a_2.csv', d3.autoType)
-console.log(dataFetch)
+const mapaFetch2 = d3.json('barrios-caba.geojson')
+const dataFetch2 = d3.dsv(';', 'data/a_2.csv', d3.autoType)
+//console.log(dataFetch)
 
-Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
+Promise.all([mapaFetch2, dataFetch2]).then(([barrios, data]) => {
   
   /* Agrupamos reclamos x barrio */
   const reclamosPorBarrio = d3.group(data, d => d.domicilio_barrio) // crea un Map
-  console.log('reclamosPorBarrio', reclamosPorBarrio)
+  //console.log('reclamosPorBarrio', reclamosPorBarrio)
   
   /* A cada feature del mapa le agregamos la prop DENUNCIAS */
   barrios.features.forEach(d => {
@@ -14,7 +14,7 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
     let cantReclamos =  (reclamosPorBarrio.get(nombreBarrio) || []).length
     d.properties.DENUNCIAS = cantReclamos
 
-    console.log(nombreBarrio + ': ' + cantReclamos)
+    //console.log(nombreBarrio + ': ' + cantReclamos)
   })
 
   /* Mapa Coroplético */
@@ -50,7 +50,16 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
         })
       )
     ],
+    style: {
+      fontSize: 14,
+      padding: "10px",
+      color: "#2f2f2f",
+      background: "#f9f7f1",
+    }
   })
   /* Agregamos al DOM la visualización chartMap */
   d3.select("#chart3_2").append(() => chartMap)
+
+  let a = d3.select("#chart3_2 svg")["_groups"][0][0];
+  a.classList.add("fondo_leyenda");
 })
