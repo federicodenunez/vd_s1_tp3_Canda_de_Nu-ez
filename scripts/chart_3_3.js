@@ -1,6 +1,6 @@
 Promise.all([
-    d3.dsv(';', 'a.csv', d3.autoType),
-    d3.dsv(';', 'a_2.csv', d3.autoType)
+    d3.dsv(';', 'data/a.csv', d3.autoType),
+    d3.dsv(';', 'data/a_2.csv', d3.autoType)
   ]).then(([data1, data2]) => {
     
     // Agrupar los datos por valor único en la columna "domicilio_barrio" y contar cuántas veces aparece cada valor
@@ -25,6 +25,7 @@ Promise.all([
     // Crear el gráfico de barras
     let chart = Plot.plot({
       marks: [
+        
         Plot.barY(filtered_counts3, {
           
           x: d => d[0], // Valor único en la columna "domicilio_barrio"
@@ -42,12 +43,26 @@ Promise.all([
           width: 20,
         }),
       ],
-      marginLeft: 70,
+      x: {
+        tickSize: 0,
+      },
+      y: {
+        grid: true,
+        domain: [0,50],
+        ticks: 5,
+      },
       width: 600,
       height: 400,
+      style: {
+        //fontSize: 13,
+        padding: "10px",
+        color: "#2f2f2f",
+        background: "#f9f7f1",
+      },
+
     });
   
-    d3.select('#chart3').append(() => chart);
+    d3.select('#chart3_3').append(() => chart);
   });
   
 

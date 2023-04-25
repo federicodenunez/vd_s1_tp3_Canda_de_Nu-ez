@@ -1,6 +1,6 @@
 let months = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
-let counts = Array.from({ length: 12 }, () => 0); // initialize array with 12 zeros
-let counts_periodo = Array.from({ length: 12 }, () => 0); // initialize array with 12 zeros
+let counts = Array.from({ length: 12 }, () => 0); // inicia el array counts con 12 ceros
+let counts_periodo = Array.from({ length: 12 }, () => 0); // inicia el array counts_periodo con 12 ceros
 let counts_primer_periodo = Array.from({ length: 12 }, () => 0); // initialize array with 12 zeros
 
 
@@ -82,6 +82,7 @@ d3.dsv(',', 'data/csv_reducido.csv', d3.autoType).then(data => {
         x: "x",
         y: "y",
         text: d => d3.format(",")(d.y).replace(",", "."),
+        fontWeight: 700,
         dy: -10,
         fontSize: 18,
       }),
@@ -97,6 +98,7 @@ d3.dsv(',', 'data/csv_reducido.csv', d3.autoType).then(data => {
         x: "x",
         y: "y",
         text: d => d3.format(",")(d.y).replace(",", "."),
+        fontWeight: 700,
         dy: -10,
         fontSize: 18,
       }),
