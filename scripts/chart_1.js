@@ -1,8 +1,6 @@
 let months = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
 let counts = Array.from({ length: 12 }, () => 0); // inicia el array counts con 12 ceros
 let counts_periodo = Array.from({ length: 12 }, () => 0); // inicia el array counts_periodo con 12 ceros
-let counts_primer_periodo = Array.from({ length: 12 }, () => 0); // initialize array with 12 zeros
-
 
 d3.dsv(',', 'data/csv_reducido.csv', d3.autoType).then(data => {
 
@@ -41,7 +39,6 @@ d3.dsv(',', 'data/csv_reducido.csv', d3.autoType).then(data => {
   let chart = Plot.plot({
     width: 700,
     viewBox: "0 0 750 450",
-    //height: 600,
     marks: [
       Plot.line(monthData, {
         x: "x",
@@ -119,7 +116,7 @@ d3.dsv(',', 'data/csv_reducido.csv', d3.autoType).then(data => {
       label: "",
       tickFormat: d3.format("d"),
       domain: [0,65000],
-      tickSize: 3, // preguntar
+      tickSize: 3, 
       ticks: 6,
     },
     style: {
@@ -136,46 +133,4 @@ d3.dsv(',', 'data/csv_reducido.csv', d3.autoType).then(data => {
   d3.select("#chart1").append(() => chart);
   d3.select("#chart1 svg")["_groups"][0][0].setAttribute("viewBox", "0 0 750 450")
 });
-
-
-/*Poner la cantidad del mes que mas tuvo y la cantidad de diciembre para
-demostrar que la diferencia no es muy grande.
-
-Paleta de colores:
-ROJO:
-GRIS ROJO: EFDBDB
-GRIS:
-
-
-  const augustData = [{ x: 7, y: counts[7] }, { x: 7, y: counts_periodo[7] }];
-Plot.link(augustData, {
-        x: "x",
-        y: "y",
-        stroke: "#EFDBDB",
-        strokeWidth: 3,
-        opacity: 1,
-      }),
-
-
-
-const inicio_ago = { x: 8, y: periodData[8].y };
-  const fin_ago = { x: 8, y: monthData[8].y };
-
-  const inicio_dic = { x: 11, y: monthData[11].y };
-  const fin_dic = { x: 11, y: periodData[11].y };
-
-  
-Plot.link(inicio_ago, fin_ago, {
-        stroke: "green",
-        strokeWidth: 5,
-        opacity: 1,
-      }),
-      Plot.link(inicio_dic, fin_dic, {
-        stroke: "#000",
-        strokeWidth: 1,
-        opacity: 1,
-        arrow: "last",
-        arrowSize: 8
-      }),
-*/ 
 

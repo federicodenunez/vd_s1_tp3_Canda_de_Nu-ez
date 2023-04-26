@@ -1,5 +1,5 @@
 let months2 = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
-let counts2 = Array.from({ length: 12 }, () => 0); // initialize array with 12 zeros
+let counts2 = Array.from({ length: 12 }, () => 0); // inicia el array counts con 12 ceros
 
 d3.dsv(';', 'data/trafico.csv', d3.autoType).then(data => {
 
@@ -29,13 +29,13 @@ d3.dsv(';', 'data/trafico.csv', d3.autoType).then(data => {
     marks: [
       Plot.barY(chartData, {
         x: "x",
-        y: "y", // utilizamos "y" para el eje y
-        fill: "color", // set the fill attribute to the "color" property of the chartData object
+        y: "y", 
+        fill: "color", // color es el array de colores para cada mes que definimos arriba
         opacity: 0.9, 
       }),
       Plot.text(chartData.slice(11), {
         x: "x",
-        y: "y", // utilizamos "y" para el eje y
+        y: "y", 
         text: d => d3.format(",")(d.y).replace(",", "."),
         fontSize: 14,
         fontWeight: 700,
@@ -67,17 +67,9 @@ d3.dsv(';', 'data/trafico.csv', d3.autoType).then(data => {
     },
   });
 
-  // Add chart to the div#chart in index.html
   d3.select('#chart2').append(() => chart)
 });
 
 
-/*Este código toma un archivo CSV llamado '147_vehiculos_mal_estacionados.csv' y lo procesa para generar un gráfico de barras que muestra el número de vehículos mal estacionados por mes.
-
-Primero, carga el archivo CSV utilizando D3 y convierte los valores numéricos en sus respectivos tipos de datos utilizando d3.autoType. Luego, crea un array llamado counts con 12 valores iniciales de cero para representar los meses del año.
-
-El código luego itera sobre cada objeto en el array data y comprueba si la propiedad fecha_ingreso existe en el objeto. Si existe, extrae el mes de la fecha, lo convierte en un índice (restando uno para que se ajuste al índice de un array) y agrega uno al valor correspondiente en el array counts.
-
-A continuación, se crea un array colors que contiene colores para cada mes. El código luego combina los valores de months, counts y colors en un objeto chartData. El objeto chartData tiene propiedades x para el nombre del mes, y para la cantidad de vehículos mal estacionados en el mes y color para el color correspondiente del mes.*/
 
 

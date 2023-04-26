@@ -1,12 +1,10 @@
 const mapaFetch2 = d3.json('barrios-caba.geojson')
 const dataFetch2 = d3.dsv(';', 'data/a_2.csv', d3.autoType)
-//console.log(dataFetch)
 
 Promise.all([mapaFetch2, dataFetch2]).then(([barrios, data]) => {
   
   /* Agrupamos reclamos x barrio */
   const reclamosPorBarrio = d3.group(data, d => d.domicilio_barrio) // crea un Map
-  //console.log('reclamosPorBarrio', reclamosPorBarrio)
   
   /* A cada feature del mapa le agregamos la prop DENUNCIAS */
   barrios.features.forEach(d => {
@@ -14,7 +12,6 @@ Promise.all([mapaFetch2, dataFetch2]).then(([barrios, data]) => {
     let cantReclamos =  (reclamosPorBarrio.get(nombreBarrio) || []).length
     d.properties.DENUNCIAS = cantReclamos
 
-    //console.log(nombreBarrio + ': ' + cantReclamos)
   })
 
   /* Mapa Coroplético */
