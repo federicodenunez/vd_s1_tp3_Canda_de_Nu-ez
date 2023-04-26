@@ -24,6 +24,9 @@ Promise.all([
   
     // Crear el gráfico de barras
     let chart = Plot.plot({
+      color: {
+        legend: true,
+      },
       marks: [
         
         Plot.barY(filtered_counts3, {
@@ -51,7 +54,7 @@ Promise.all([
         domain: [0,50],
         ticks: 5,
       },
-      width: 600,
+      width: 700,
       height: 400,
       style: {
         //fontSize: 13,
@@ -64,6 +67,7 @@ Promise.all([
   
     d3.select('#chart3_3').append(() => chart);
   });
+ 
   
 
   /*// filtramos para solo tener los meses con más de 10 denuncias
