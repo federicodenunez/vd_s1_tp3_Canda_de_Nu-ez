@@ -65,3 +65,7 @@ p{
     margin: auto;
     position: relative;
 }
+
+.fuente {
+    font-size: 11px;
+}
